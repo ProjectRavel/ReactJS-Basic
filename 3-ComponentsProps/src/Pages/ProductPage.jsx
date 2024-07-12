@@ -1,6 +1,7 @@
 import Product from "../components/Fragment/Product";
 import ProductData from "../assets/ProductData/ProductData";
 import NavigationProduct from "../components/Elements/navigation/navigationProducts";
+import Counter from "../components/Fragment/Counter";
 
 console.log(ProductData)
 
@@ -23,6 +24,9 @@ function ProductPages() {
             </Product>;
           })}
         </div>
+      </div>
+      <div className="flex justify-center mb-72">
+      <Counter/>
       </div>
     </>
   );
