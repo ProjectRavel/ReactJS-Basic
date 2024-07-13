@@ -76,7 +76,7 @@ const AccountNavigation = () => {
     e.preventDefault();
     localStorage.removeItem('email');
     localStorage.removeItem('password');
-    navigateLogout('/ ') 
+    navigateLogout('/') 
   };
   return (
     <nav className="bg-gray-800 text-white">

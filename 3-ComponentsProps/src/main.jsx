@@ -23,11 +23,6 @@ const router = createBrowserRouter([
     element: <ProductsPage/>,
     errorElement: <ErrorPage />
   },
-  {
-    path: '/cart',
-    element: <ProductsPage.table/>,
-    errorElement: <ErrorPage />
-  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
