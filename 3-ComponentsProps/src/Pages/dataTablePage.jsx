@@ -1,4 +1,11 @@
-export default function DataTable({ items }) {
+
+export default function DataTable({ items, total }) {
+
+  const RemoveItemLocalStorage = () => {
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+
   return (
     <div className="mt-12 bg-gray-100">
       <div className="container mx-auto p-8">
@@ -51,10 +58,27 @@ export default function DataTable({ items }) {
                   </tr>
                 ))}
               </tbody>
+              <tfoot className="bg-gray-50">
+                <tr className="bg-slate-300">
+                  <td className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider" colSpan={2}>Total</td>
+                  <td className="px-6 py-3 text-left font-medium text-gray-700 uppercase">{
+                    total.toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })
+                  }</td>  
+                  </tr>
+              </tfoot>
             </table>
+          </div>
+          <div className="mt-5">
+            <form onSubmit={RemoveItemLocalStorage}>
+                  <button type="submit" className="bg-red-600 px-4 py-2 rounded-full text-white font-medium">Remove all</button>
+            </form>
           </div>
         </div>
       </div>
+
     </div>
   );
 }
