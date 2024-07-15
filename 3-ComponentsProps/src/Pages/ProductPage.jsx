@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import Product from "../components/Fragment/Product";
-import ProductData from "../assets/ProductData/ProductData";
 import NavigationProduct from "../components/Elements/navigation/navigationProducts";
+import { getProduct } from "../services/product.service";
 
 function ProductPages() {
   const [cart, setCart] = useState(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     return savedCart;
   });
+
+  const [products, setproducts] = useState([])
 
   const HandleAddToCart = (itemProduct) => {
     const existingItem = cart.find((item) => item.name === itemProduct.title);
@@ -35,21 +37,30 @@ function ProductPages() {
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log(cart.length);
   }, [cart]);
+
+  useEffect(() => {
+    getProduct(data => {
+      setproducts(data)
+    })
+  }, [])
+
+  console.log(products)
+
   return (
     <>
       <NavigationProduct />
       <div className="mx-auto py-8 max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {ProductData.map((product) => (
+          {products.map((product) => (
             <Product key={product.id}>
               <Product.image src={product.image} />
               <Product.body
                 Title={product.title}
-                brand={product.brand}
+                brand={product.category}
                 price={product.price}
                 onClick={() => HandleAddToCart(product)}
               >
-                {product.desc}
+                {product.description}
               </Product.body>
             </Product>
           ))}

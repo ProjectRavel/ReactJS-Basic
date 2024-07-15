@@ -27,11 +27,8 @@ const Body = ({ Title = "...", brand = "...", price = "...", onClick, children }
         <h2 className="text-xl font-bold text-slate-700">{Title}</h2>
         <p className="text-sm text-slate-500">Brand: {brand}</p>
         <p className="text-sm text-slate-500">
-          Price:{" "}
-          {price.toLocaleString("id-ID", {
-            style: "currency",
-            currency: "IDR",
-          })}
+          Price:$   
+          {price}
         </p>
         <p className="text-sm text-slate-400 mt-2 mb-4">{children}</p>
       </div>
