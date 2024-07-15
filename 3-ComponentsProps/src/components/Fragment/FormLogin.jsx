@@ -1,5 +1,6 @@
 import Button from "../Elements/input/button/button";
 import IndexForm from "../Elements/input/index";
+import { useRef, useEffect} from "react";
 
 const FormLogin = () => {
   const HandleLogin = (e) => {
@@ -14,6 +15,11 @@ const FormLogin = () => {
       alert('Please fill all fields')
     }
   }
+  const emailRef = useRef(null) 
+
+  useEffect(() => {
+    emailRef.current.focus()
+  }, [])
   return (
     <form onSubmit={HandleLogin}>
       <IndexForm
@@ -22,6 +28,7 @@ const FormLogin = () => {
         forHTML="email"
         type="email"
         id="email"
+        ref={emailRef}
       />
       <IndexForm
         text="password"
