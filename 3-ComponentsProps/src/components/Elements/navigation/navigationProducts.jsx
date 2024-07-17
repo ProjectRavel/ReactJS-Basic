@@ -74,7 +74,8 @@ const AccountNavigation = () => {
 
   const logout = (e) => {
     e.preventDefault();
-    localStorage.removeItem('email');
+    localStorage.removeItem('token');
+    localStorage.removeItem('usernameDisplay');
     localStorage.removeItem('password');
     navigateLogout('/') 
   };
@@ -82,7 +83,7 @@ const AccountNavigation = () => {
     <nav className="bg-gray-800 text-white">
         <div className="flex justify-end items-center space-x-4 p-2">
           <span className="text-sm font-bold">
-            {localStorage.getItem('email').split('@')[0]}
+            {localStorage.getItem('usernameDisplay')}
           </span>
           <form onSubmit={logout}>
             <button

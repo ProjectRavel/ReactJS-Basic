@@ -3,7 +3,7 @@ import Button from "../Elements/input/button/button";
 const Product = ({ children }) => {
  
   return (
-    <div className="max-w-sm w-full h-full bg-slate-100 rounded-lg shadow-2xl shadow-slate-300 hover:shadow-slate-400 transition-all duration-300 p-4 mx-2 flex flex-col justify-between">
+    <div className="max-w-sm w-full h-full bg-slate-100 rounded-lg shadow-2xl shadow-slate-300 hover:scale-110 transition-all duration-300 p-4 mx-2 flex flex-col justify-between">
       {children}
     </div>
   );
@@ -30,7 +30,7 @@ const Body = ({ Title = "...", brand = "...", price = "...", onClick, children }
           Price:$   
           {price}
         </p>
-        <p className="text-sm text-slate-400 mt-2 mb-4">{children}</p>
+        <p className="text-sm text-slate-400 mt-2 mb-4">{children.split('.')[0]}</p>
       </div>
       <Button variant="blue" name="Add to cart" onClick={onClick}/>
     </div>
