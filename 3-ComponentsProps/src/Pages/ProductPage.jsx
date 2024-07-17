@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Product from "../components/Fragment/Product";
+import Product from "../components/Fragment/Products";
 import NavigationProduct from "../components/Elements/navigation/navigationProducts";
 import { getProduct } from "../services/product.service";
 
@@ -33,10 +33,12 @@ function ProductPages() {
     }
   };
 
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log(cart.length);
   }, [cart]);
+
 
   useEffect(() => {
     getProduct(data => {
@@ -53,7 +55,7 @@ function ProductPages() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <Product key={product.id}>
-              <Product.image src={product.image} />
+              <Product.image src={product.image} id={product.id} />
               <Product.body
                 Title={product.title}
                 brand={product.category}
