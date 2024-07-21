@@ -2,51 +2,21 @@ import { useEffect, useState } from "react";
 import Product from "../components/Fragment/Products";
 import NavigationProduct from "../components/Elements/navigation/navigationProducts";
 import { getProduct } from "../services/product.service";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slice/cartSlice";
 
 function ProductPages() {
-  const [cart, setCart] = useState(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    return savedCart;
-  });
+  const dispatch = useDispatch();
 
-  const [products, setproducts] = useState([])
-
-  const HandleAddToCart = (itemProduct) => {
-    const existingItem = cart.find((item) => item.name === itemProduct.title);
-    if (existingItem) {
-      setCart(
-        cart.map((item) =>
-          item.name === itemProduct.title
-            ? { ...item, qty: item.qty + 1 }
-            : item
-        )
-      );
-    } else {
-      setCart([
-        ...cart,
-        {
-          name: itemProduct.title,
-          price: itemProduct.price,
-          qty: 1,
-        },
-      ]);
-    }
-  };
-
+  const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    console.log(cart.length);
-  }, [cart]);
+    getProduct((data) => {
+      setproducts(data);
+    });
+  }, []);
 
-
-  useEffect(() => {
-    getProduct(data => {
-      setproducts(data)
-    })
-  }, [])
-
-  console.log(products)
+  console.log(products);
 
   return (
     <>
@@ -60,7 +30,16 @@ function ProductPages() {
                 Title={product.title}
                 brand={product.category}
                 price={product.price}
-                onClick={() => HandleAddToCart(product)}
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      id: product.id,
+                      name: product.title,
+                      price: product.price,
+                      qty: 1,
+                    })
+                  )
+                }
               >
                 {product.description}
               </Product.body>
