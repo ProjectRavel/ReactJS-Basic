@@ -3,11 +3,14 @@ import NavigationProduct from "../components/Elements/navigation/navigationProdu
 
 const CartPage = () => {
     const items = JSON.parse(localStorage.getItem('cart'))
-    const total = items.reduce((acc, item) => acc + (item.price * item.qty), 0)
+    const total = items.reduce((acc, item) => {
+        return acc += (item.price * item.qty)
+    }, 0)
+    console.log(total)
     return (
         <>
         <NavigationProduct />
-        <DataTable items={items}total={total}/>
+        <DataTable items={items} total={total}/>
         </>
     )
 }

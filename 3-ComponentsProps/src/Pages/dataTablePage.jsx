@@ -3,7 +3,6 @@ export default function DataTable({ items, total }) {
     localStorage.removeItem("cart");
     localStorage.setItem("cart", JSON.stringify([]));
   };
-
   return (
     <div className="mt-12 bg-gray-100">
       <div className="container mx-auto p-8">
@@ -65,7 +64,7 @@ export default function DataTable({ items, total }) {
                     Total
                   </td>
                   <td className="px-6 py-3 text-left font-medium text-gray-700 uppercase">
-                    ${Math.round(total)}
+                    ${parseFloat(total).toFixed(2)}
                   </td>
                 </tr>
               </tfoot>

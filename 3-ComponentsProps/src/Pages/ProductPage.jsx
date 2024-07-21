@@ -7,7 +7,6 @@ import { addToCart } from "../../redux/slice/cartSlice";
 
 function ProductPages() {
   const dispatch = useDispatch();
-
   const [products, setproducts] = useState([]);
 
   useEffect(() => {
@@ -15,8 +14,6 @@ function ProductPages() {
       setproducts(data);
     });
   }, []);
-
-  console.log(products);
 
   return (
     <>
