@@ -80,7 +80,7 @@ const AccountNavigation = ({usernameDisplay}) => {
     navigateLogout('/');
   };
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-blue-500 text-white">
       <div className="flex justify-end items-center space-x-4 p-2">
         <span className="text-sm font-bold">
           {usernameDisplay}
