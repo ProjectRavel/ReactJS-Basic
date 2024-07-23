@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useLogin } from '../../../hooks/uselogin.jsx';
 
 const NavigationProduct = () => {
   const navigate = useNavigate();
+  const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false);
   const usernameDisplay = useLogin();
-  const storeLength = useSelector(state => state.cart.data.length);
-
+  const storeLength = useSelector(state => state.cart.data.reduce((total, item) => total + item.qty, 0));
+  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -43,10 +44,10 @@ const NavigationProduct = () => {
               </svg>
             </button>
             <div className={`flex-col md:flex-row md:flex ${menuOpen ? 'flex' : 'hidden'} md:items-center md:space-x-8`}>
-              <span className="text-lg cursor-pointer py-2 md:py-0 hover:text-blue-500" onClick={productSite}>
+              <span className={`text-lg cursor-pointer hover:text-blue-500 ${location.pathname == "/products" ? "text-blue-600" : ""}`} onClick={productSite}>
                 Products
               </span>
-              <span className="text-lg cursor-pointer py-2 md:py-0 hover:text-blue-500" onClick={cartSite}>
+              <span className={`text-lg cursor-pointer hover:text-blue-500 ${location.pathname == "/cart" ? "text-blue-600" : ""}`} onClick={cartSite}>
                 Cart   <span className='text-lg cursor-pointer py-2 md:py-0'>({storeLength})</span>
               </span>
             
@@ -55,7 +56,7 @@ const NavigationProduct = () => {
         </div>
         {menuOpen && (
           <div className="md:hidden flex flex-col space-y-2 px-4 pb-4">
-            <span className="text-lg cursor-pointer hover:text-blue-500" onClick={productSite}>
+            <span className={`text-lg cursor-pointer hover:text-blue-500 ${location.pathname=== "localhost5173/products" ? "font-bold" : ""}`} onClick={productSite}>
               Products
             </span>
             <span className="text-lg cursor-pointer hover:text-blue-500" onClick={cartSite}>
