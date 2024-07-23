@@ -1,7 +1,7 @@
 
 export default function DataTable({ items, total }) {
-  const removeItemLocalStorage = (e) => {
-    e.preventDefault();
+  const removeItemLocalStorage = () => {
+
     localStorage.removeItem('cart');
     localStorage.setItem('cart', JSON.stringify([]));
   };

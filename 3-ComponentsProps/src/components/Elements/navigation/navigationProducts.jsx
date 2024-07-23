@@ -25,9 +25,9 @@ const NavigationProduct = () => {
   };
   
   return (
-    <div className=' sticky top-0'>
+    <div className='sticky top-0 z-10'>
       <AccountNavigation usernameDisplay={usernameDisplay} />
-      <nav className="bg-white shadow-md z-1000">
+      <nav className="bg-white shadow-md ">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <a href="/products" className="flex items-center space-x-3">
             <span className="self-center text-2xl font-semibold text-gray-800">

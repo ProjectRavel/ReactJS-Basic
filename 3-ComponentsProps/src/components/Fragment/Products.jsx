@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Product = ({ children }) => {
  
   return (
-    <div className="max-w-sm w-full h-full bg-slate-100 rounded-lg shadow-2xl shadow-slate-300 hover:scale-105 transition-all duration-300 p-4 mx-2 flex flex-col justify-between cursor-pointer">
+    <div className="max-w-sm w-full h-full bg-slate-100 rounded-lg shadow-2xl shadow-slate-300 hover:scale-110 transition-all duration-300 p-4 mx-2 flex flex-col justify-between cursor-pointer">
       {children}
     </div>
   );
@@ -25,7 +25,7 @@ const Body = ({ Title = "...", brand = "...", price = "...", onClick, children }
   return (
     <div className="flex flex-col flex-grow justify-between">
       <div>
-        <h2 className="text-xl font-bold text-slate-700">{Title}...</h2>
+        <h2 className="text-xl font-bold text-slate-700">{Title.length > 30 ? `${Title.slice(0, 30)}...` : Title}</h2>
         <p className="text-sm text-slate-500">Brand: {brand}</p>
         <p className="text-sm text-slate-500">
           Price:$   
