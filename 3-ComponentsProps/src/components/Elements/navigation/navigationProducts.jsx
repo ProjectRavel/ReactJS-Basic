@@ -34,7 +34,7 @@ const NavigationProduct = () => {
               VelsProject
             </span>
           </a>
-          <div className="flex items-center space-x-4">
+          <div className={`flex items-center space-x-4 ${menuOpen ? "hidden" : ""}`}>
             <button
               className="text-lg cursor-pointer md:hidden focus:outline-none"
               onClick={toggleMenu}
@@ -60,7 +60,7 @@ const NavigationProduct = () => {
               Products
             </span>
             <span className="text-lg cursor-pointer hover:text-blue-500" onClick={cartSite}>
-              Cart  <span className='w-6 h-2 bg-blue-500 mx-6 my-2'>({storeLength})</span>
+              Cart  <span className='w-6 h-2 '>({storeLength})</span>
             </span>
           </div>
         )}
