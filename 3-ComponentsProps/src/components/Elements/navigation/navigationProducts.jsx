@@ -7,11 +7,7 @@ const NavigationProduct = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const usernameDisplay = useLogin();
-  const storeLength = useSelector(state => state.cart.data.length)
-
-  useEffect(() => {
-    console.log(storeLength);
-  }, [storeLength]);
+  const storeLength = useSelector(state => state.cart.data.length);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -26,7 +22,7 @@ const NavigationProduct = () => {
     navigate('/cart');
     setMenuOpen(false); // Close the menu after navigating
   };
-
+  
   return (
     <div>
       <AccountNavigation usernameDisplay={usernameDisplay} />
@@ -51,8 +47,9 @@ const NavigationProduct = () => {
                 Products
               </span>
               <span className="text-lg cursor-pointer py-2 md:py-0 hover:text-blue-500" onClick={cartSite}>
-                Cart
+                Cart   <span className='text-lg cursor-pointer py-2 md:py-0'>({storeLength})</span>
               </span>
+            
             </div>
           </div>
         </div>
@@ -62,7 +59,7 @@ const NavigationProduct = () => {
               Products
             </span>
             <span className="text-lg cursor-pointer hover:text-blue-500" onClick={cartSite}>
-              Cart
+              Cart  <span className='w-6 h-2 bg-blue-500 mx-6 my-2'>({storeLength})</span>
             </span>
           </div>
         )}
@@ -101,3 +98,5 @@ const AccountNavigation = ({usernameDisplay}) => {
 };
 
 export default NavigationProduct;
+
+

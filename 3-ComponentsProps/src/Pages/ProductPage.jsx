@@ -1,3 +1,4 @@
+// ProductPages.jsx
 import { useEffect, useState } from "react";
 import Product from "../components/Fragment/Products";
 import NavigationProduct from "../components/Elements/navigation/navigationProducts";
@@ -13,7 +14,7 @@ function ProductPages() {
     getProduct((data) => {
       setproducts(data);
     });
-  }, []);
+  }, []); // Menggunakan array kosong untuk memastikan useEffect hanya dijalankan sekali
 
   return (
     <>
